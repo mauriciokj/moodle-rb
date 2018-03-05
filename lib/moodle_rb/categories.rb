@@ -54,6 +54,28 @@ module MoodleRb
       response.parsed_response.first
     end
 
+    def update(params)
+      response = self.class.post(
+        '/webservice/rest/server.php',
+        {
+          :query => query_hash('core_course_update_categories', token),
+          :body => {
+            :categories => {
+              '0' => {
+                :id => params[:id],
+                :name => params[:name],
+                :parent => (params[:parent_category] || ROOT_CATEGORY),
+                :idnumber => params[:idnumber],
+                :description => params[:description]
+              }
+            }
+          }
+        }.merge(query_options)
+      )
+      check_for_errors(response)
+      response.parsed_response.first
+    end
+
     def show(id)
       response = self.class.post(
         '/webservice/rest/server.php',
