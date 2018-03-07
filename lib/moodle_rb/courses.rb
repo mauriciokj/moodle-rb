@@ -54,6 +54,30 @@ module MoodleRb
       response.parsed_response.first
     end
 
+    def update(params)
+      response = self.class.post(
+        '/webservice/rest/server.php',
+        {
+          :query => query_hash('core_course_create_courses', token),
+          :body => {
+            :courses => {
+              '0' => {
+                :id => params[:id],
+                :fullname => params[:full_name],
+                :shortname => params[:short_name],
+                :categoryid => params[:parent_category],
+                :idnumber => params[:idnumber],
+                :startdate => params[:startdate],
+                :enddate => params[:enddate]
+              }
+            }
+          }
+        }.merge(query_options)
+      )
+      check_for_errors(response)
+      response.parsed_response.first
+    end
+
     def show(id)
       response = self.class.post(
         '/webservice/rest/server.php',
