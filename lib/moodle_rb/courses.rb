@@ -23,7 +23,7 @@ module MoodleRb
     end
 
     def search(category_id)
-      esponse = self.class.post(
+      response = self.class.post(
         '/webservice/rest/server.php',
         {
           :query => query_hash('core_course_get_courses', token),
