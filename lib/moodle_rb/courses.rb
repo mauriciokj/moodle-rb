@@ -26,7 +26,7 @@ module MoodleRb
       response = self.class.post(
         '/webservice/rest/server.php',
         {
-          :query => query_hash('core_course_get_courses', token),
+          :query => query_hash('core_course_get_courses_by_field', token),
           :body => {
             :categoryid => category_id,
           }
