@@ -22,6 +22,20 @@ module MoodleRb
       response.parsed_response
     end
 
+    def search(params = {})
+      response = self.class.post(
+        '/webservice/rest/server.php',
+        {
+          :query => query_hash('core_course_get_courses', token),
+          :body => {
+            :criteria => key_value_query_format(params)
+          }
+        }.merge(query_options)
+      )
+      check_for_errors(response)
+      response.parsed_response['courses']
+    end
+
     # required params:
     # full_name
     # short_name
