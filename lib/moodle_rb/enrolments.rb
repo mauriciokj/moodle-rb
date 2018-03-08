@@ -24,7 +24,7 @@ module MoodleRb
               '0' => {
                 :userid => params[:user_id],
                 :courseid => params[:course_id],
-                :roleid => STUDENT_ROLE_ID
+                :roleid => params[:roleid] || STUDENT_ROLE_ID
               }
             }
           }
