@@ -28,7 +28,7 @@ module MoodleRb
         {
           :query => query_hash('core_course_get_courses_by_field', token),
           :body => {
-            :categoryid => category_id,
+            :category => category_id,
           }
         }.merge(query_options)
       )
