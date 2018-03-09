@@ -38,7 +38,7 @@ module MoodleRb
       response = self.class.post(
         '/webservice/rest/server.php',
         {
-          :query => query_hash('enrol_manual_unenrol_users ', token),
+          :query => query_hash('enrol_manual_unenrol_users', token),
           :body => {
             :enrolments => {
               '0' => {
